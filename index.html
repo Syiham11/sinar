@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+
+const start = 125730;
+const end = 579381;
+// function ini berfungsi untuk mengechek hasil pengurangan nilai ganjil
+function isCheckMinus(pwd) {
+  return pwd.split('').every((digit, index) => index === 0 || digit >= pwd[index - 1]);
+}
+// function untuk mengechek nilai harus = 1
+function checkOnlyOne(pwd) {
+  return /(\d)\1/.test(pwd);
+}
+function isValid(pwd) {
+  return checkOnlyOne(pwd) && isCheckMinus(pwd);
+}
+
+let validCount = 0;
+for (let pwd = start; pwd <= end; pwd++) {
+  validCount += isValid(String(pwd));
+}
+  document.getElementById("demo").innerHTML = validCount;
+
+</script>
+</body>
+</html>
